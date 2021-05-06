@@ -13,3 +13,8 @@ pip3 install requests
 Copy the default.settings.ini to settings.ini file and put required info.
 Alert will be given through telegram bot. Check telegram docs for bot creation.
 Put comma separated pincode value.
+
+To run the script:
+```
+python3 main.py &
+```
