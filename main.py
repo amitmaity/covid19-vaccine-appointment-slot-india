@@ -1,5 +1,6 @@
 import time
 import requests
+import urllib
 from datetime import datetime
 from configparser import ConfigParser
 from urllib.parse import urlencode
@@ -30,7 +31,7 @@ while True:
     for pincode in pincodes:
         response = get_available_vaccine_center(pincode)
         if response['centers']:
-            msg = "Vaccine available for pincode:" + str(pincode) + ", check here: " + url
+            msg = "Vaccine available for pincode:" + str(pincode) + ", check here: " + urllib.parse.quote_plus(url)
             custom_telegram.send_text(msg)
 
-    time.sleep(14400)
+    time.sleep(21600)
