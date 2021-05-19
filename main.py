@@ -30,8 +30,16 @@ while True:
     pincodes = pincodes.split(",")
     for pincode in pincodes:
         response = get_available_vaccine_center(pincode)
+        available_flag = 0
         if response['centers']:
-            msg = "Vaccine available for pincode:" + str(pincode) + ", check here: " + urllib.parse.quote_plus(url)
-            custom_telegram.send_text(msg)
+            for center in response['centers']:
+                if center['sessions']:
+                    for session in center['sessions']:
+                        if session['available_capacity'] > 0:
+                            available_flag = 1
+                    if available_flag == 1:
+                        msg = "Vaccine available for pincode:" + str(pincode) + ", Center Name:" + str(center['name']) + " check here: " + urllib.parse.quote_plus(url)
+                        custom_telegram.send_text(msg)
+                    available_flag = 0
 
-    time.sleep(21600)
+    time.sleep(300)
