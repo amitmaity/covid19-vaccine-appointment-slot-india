@@ -38,7 +38,7 @@ while True:
                         if session['available_capacity'] > 0:
                             available_flag = 1
                     if available_flag == 1:
-                        msg = "Vaccine available for pincode:" + str(pincode) + ", Center Name:" + str(center['name']) + " check here: " + urllib.parse.quote_plus(url)
+                        msg = "Vaccine available for pincode:" + str(pincode) + ", Center Name:" + str(center['name']) + ", Total Capacity:" + str(session['available_capacity']) + ", Available Dose1:" + str(session['available_capacity_dose1']) + ", Available Dose2:" + str(session['available_capacity_dose2']) + "  check here: " + urllib.parse.quote_plus(url)
                         custom_telegram.send_text(msg)
                     available_flag = 0
 
